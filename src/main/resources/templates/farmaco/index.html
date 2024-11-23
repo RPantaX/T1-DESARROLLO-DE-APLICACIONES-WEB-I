@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layout::head}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <nav th:insert="~{layout::menu}"></nav>
+    <br />
+    <div class="card">
+        <div class="card-header text-bg-secondary">
+            Mantenimiento de Farmacos
+        </div>
+        <div class="card-body">
+            <h5 class=card-title >Lista de farmacos</h5>
+            <a th:href="@{/farmaco/create}" class="btn btn-primary">Crear nuevo Farmaco</a>
+
+            <hr />
+
+            <table class="table table-striped">
+                <thead>
+                <tr >
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Editar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="farmaco : ${farmacos}">
+                    <th scope="row" th:text="${farmaco.idFarmaco}"></th>
+                    <td th:text="${farmaco.nomFarmaco}"> ></td>
+                    <td th:text="${farmaco.precio}" ></td>
+                    <td>
+                        <a th:href="@{/farmaco/edit/{id}(id=${farmaco.idFarmaco})}" class="btn btn-warning"> Editar</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+</body>
+</html>
